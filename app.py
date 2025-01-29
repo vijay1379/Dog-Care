@@ -90,7 +90,7 @@ def upload():
 
         # Generate QR Code
         qr = qrcode.QRCode(version=1, box_size=10, border=5)
-        qr.add_data(f"https://dogcare-chi.vercel.app/{dog_id}")  # For local development
+        qr.add_data(f"https://dogcare-chi.vercel.app/dog/{dog_id}")  # For local development
         qr.make(fit=True)
         img = qr.make_image(fill='black', back_color='white')
 
