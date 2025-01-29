@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ dog.name }} Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFDEE9;
+            background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .profile-image {
+            border-radius: 50%;
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border: 4px solid #007bff;
+            margin-right: 20px;
+        }
+        .name-section {
+            text-align: left;
+            width: 100%;
+        }
+        .name-section h1 {
+            color: #007bff;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: bold;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .name-section h1::after {
+            content: '';
+            position: absolute;
+            left: -30px;
+            bottom: 0;
+            width: calc(100% + 60px);
+            height: 2px;
+            background-color: #007bff;
+        }
+        .details-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+        }
+        .details-list li {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #495057;
+        }
+        .dog-gallery {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .dog-gallery img {
+            width: 30%;
+            border-radius: 10px;
+            object-fit: cover;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{ profile_image_url }}" alt="Dog's Profile" class="profile-image">
+            <div class="name-section">
+                <h1>{{ dog.name }}</h1>
+                <ul class="details-list">
+                    <li>Breed: {{ dog.breed }}</li>
+                    <li>Age: {{ dog.age }}</li>
+                    <li>Health: {{ dog.health }}</li>
+                    <li>Contact: {{ dog.contact }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <p>{{ dog.description }}</p>
+        <div class="dog-gallery">
+            <img src="{{ pic1_url }}" alt="Pic 1">
+            <img src="{{ pic2_url }}" alt="Pic 2">
+            <img src="{{ pic3_url }}" alt="Pic 3">
+        </div>
+        <p class="contact">Contact for Inquiries: {{ dog.contact }}</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Dog Details</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FFDEE9;
+            background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .upload-container {
+            background: rgba(255, 255, 255, 0.95);
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .upload-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .upload-container input, .upload-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 2px solid #eef0f7;
+            border-radius: 12px;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: #f8f9fc;
+        }
+        .upload-container input:focus, .upload-container textarea:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 0 4px rgba(106, 17, 203, 0.1);
+        }
+        .upload-container textarea {
+            resize: vertical;
+            height: 100px;
+            min-height: 100px;
+        }
+        .upload-container button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        .upload-container button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.2);
+        }
+        .upload-container label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 600;
+            color: #4a5568;
+            text-align: left;
+            font-size: 14px;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(106, 17, 203, 0.5);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(106, 17, 203, 0.7);
+        }
+        /* Responsive Design */
+        @media (max-height: 800px) {
+            body {
+                padding: 10px;
+            }
+            .upload-container {
+                padding: 20px;
+                margin: 10px auto;
+            }
+            .upload-container input, .upload-container textarea {
+                padding: 10px;
+                margin: 6px 0;
+            }
+            .upload-container h2 {
+                margin-bottom: 15px;
+                font-size: 22px;
+            }
+        }
+        @media (max-width: 520px) {
+            .upload-container {
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h2>Upload Dog Details</h2>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Dog Name" required>
+            <input type="text" name="breed" placeholder="Breed" required>
+            <input type="text" name="age" placeholder="Age" required>
+            <input type="text" name="health" placeholder="Health Status" required>
+            <input type="text" name="contact" placeholder="Contact Info" required>
+            <textarea name="description" placeholder="Description" required></textarea>
+            <label for="profile">Profile Image:</label>
+            <input type="file" name="profile" accept="image/*" required>
+            <label for="pic1">Pic 1:</label>
+            <input type="file" name="pic1" accept="image/*" required>
+            <label for="pic2">Pic 2:</label>
+            <input type="file" name="pic2" accept="image/*" required>
+            <label for="pic3">Pic 3:</label>
+            <input type="file" name="pic3" accept="image/*" required>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+</body>
+</html>
