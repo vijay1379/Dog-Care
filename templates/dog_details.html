@@ -11,7 +11,6 @@
             padding: 0;
             background-color: #FFDEE9;
             background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
-
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,8 +33,8 @@
         }
         .profile-image {
             border-radius: 50%;
-            width: 200px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             object-fit: cover;
             border: 4px solid #007bff;
             margin-right: 20px;
@@ -55,9 +54,9 @@
         .name-section h1::after {
             content: '';
             position: absolute;
-            left: -30px;
+            left: 0;
             bottom: 0;
-            width: calc(100% + 60px);
+            width: 100%;
             height: 2px;
             background-color: #007bff;
         }
@@ -68,7 +67,7 @@
         }
         .details-list li {
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #495057;
         }
         .dog-gallery {
@@ -82,30 +81,42 @@
             object-fit: cover;
             height: 200px;
         }
+        .contact {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <img src="{{ profile_image_url }}" alt="Dog's Profile" class="profile-image">
+            <img src="{{ profile_image_url }}" alt="{{ dog.name }}'s Profile" class="profile-image">
             <div class="name-section">
                 <h1>{{ dog.name }}</h1>
                 <ul class="details-list">
-                    <li>Breed: {{ dog.breed }}</li>
-                    <li>Age: {{ dog.age }}</li>
-                    <li>Health: {{ dog.health }}</li>
-                    <li>Contact: {{ dog.contact }}</li>
+                    <li><strong>Breed:</strong> {{ dog.breed }}</li>
+                    <li><strong>Age:</strong> {{ dog.age }} years</li>
+                    <li><strong>Gender:</strong> {{ dog.gender }}</li>
+                    <li><strong>Territory:</strong> {{ dog.territory }}</li>
+                    <li><strong>Health:</strong> {{ dog.health }}</li>
+                    <li><strong>Vaccination:</strong> {{ dog.vaccination }}</li>
+                    <li><strong>ABC Status:</strong> {{ dog.abc }}</li>
+                    <li><strong>Owner:</strong> {{ dog.owner }}</li>
+                    <li><strong>Address:</strong> {{ dog.address }}</li>
                 </ul>
             </div>
         </div>
 
         <p>{{ dog.description }}</p>
+
         <div class="dog-gallery">
-            <img src="{{ pic1_url }}" alt="Pic 1">
-            <img src="{{ pic2_url }}" alt="Pic 2">
-            <img src="{{ pic3_url }}" alt="Pic 3">
+            <img src="{{ pic1_url }}" alt="Image 1">
+            <img src="{{ pic2_url }}" alt="Image 2">
+            <img src="{{ pic3_url }}" alt="Image 3">
         </div>
-        <p class="contact">Contact for Inquiries: {{ dog.contact }}</p>
+
+        <p class="contact">Contact: {{ dog.contact }} | Email: {{ dog.email }}</p>
     </div>
 </body>
 </html>
