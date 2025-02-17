@@ -5,13 +5,12 @@ from gridfs import GridFS
 from bson.objectid import ObjectId
 import qrcode
 from io import BytesIO
-import os
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
 # MongoDB setup
-client = MongoClient(os.environ.get('MONGO_URI'))
+client = MongoClient('mongodb+srv://capcrypto621311:BPtR7SjMuSWjg6zv@dogdb.pls9o.mongodb.net/?retryWrites=true&w=majority&appName=dogDB')
 db = client.dogdb
 dogs = db.dogs
 fs = GridFS(db)  # GridFS for storing images
@@ -39,7 +38,7 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        if username == 'admin' and password == 'password': 
+        if username == 'admin' and password == 'password':  # Simple hardcoded check
             user = User(username)
             login_user(user)
             return redirect(url_for('upload'))
@@ -55,12 +54,22 @@ def logout():
 @login_required
 def upload():
     if request.method == 'POST':
+        # Collect form data
         name = request.form['name']
         breed = request.form['breed']
         age = request.form['age']
+        gender = request.form['gender']
+        territory = request.form['territory']
         health = request.form['health']
+        vaccination = request.form['vaccination']
+        abc = request.form['abc']
+        owner = request.form['owner']
+        address = request.form['address']
         contact = request.form['contact']
+        email = request.form['email']
         description = request.form['description']
+
+        # Collect images
         profile_image = request.files['profile']
         pic1 = request.files['pic1']
         pic2 = request.files['pic2']
@@ -77,8 +86,15 @@ def upload():
             'name': name,
             'breed': breed,
             'age': age,
+            'gender': gender,
+            'territory': territory,
             'health': health,
+            'vaccination': vaccination,
+            'abc': abc,
+            'owner': owner,
+            'address': address,
             'contact': contact,
+            'email': email,
             'description': description,
             'profile_image_id': profile_image_id,
             'pic1_id': pic1_id,
