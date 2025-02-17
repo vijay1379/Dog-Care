@@ -12,109 +12,89 @@
         }
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #FFDEE9;
-            background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
-
+            background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
             min-height: 100vh;
-            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
-            overflow-y: auto;
         }
         .upload-container {
             background: rgba(255, 255, 255, 0.95);
+            width: 100%;
             max-width: 500px;
-            margin: 20px auto;
             padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
         .upload-container h2 {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #333;
+            text-align: center;
             font-size: 24px;
             font-weight: bold;
-            text-align: center;
         }
-        .upload-container input, .upload-container textarea {
+        .form-group {
+            margin-bottom: 12px;
+        }
+        label {
+            font-weight: bold;
+            font-size: 14px;
+            color: #4a5568;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, textarea {
             width: 100%;
-            padding: 12px;
-            margin: 8px 0;
+            padding: 10px;
             border: 2px solid #eef0f7;
-            border-radius: 12px;
-            font-size: 15px;
+            border-radius: 8px;
+            font-size: 14px;
             outline: none;
-            transition: all 0.3s ease;
             background: #f8f9fc;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
         }
-        .upload-container input:focus, .upload-container textarea:focus {
+        input:focus, select:focus, textarea:focus {
             border-color: #6a11cb;
             box-shadow: 0 0 0 4px rgba(106, 17, 203, 0.1);
         }
-        .upload-container textarea {
+        textarea {
             resize: vertical;
-            height: 100px;
-            min-height: 100px;
+            height: 80px;
         }
         .upload-container button {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: #fff;
+            color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 15px;
+            margin-top: 10px;
         }
         .upload-container button:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(106, 17, 203, 0.2);
         }
-        .upload-container label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: 600;
-            color: #4a5568;
-            text-align: left;
-            font-size: 14px;
+        /* Custom File Input Styling */
+        .file-input {
+            border: 2px dashed #ccc;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: border 0.3s ease;
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(106, 17, 203, 0.5);
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(106, 17, 203, 0.7);
+        .file-input:hover {
+            border-color: #6a11cb;
         }
         /* Responsive Design */
-        @media (max-height: 800px) {
-            body {
-                padding: 10px;
-            }
-            .upload-container {
-                padding: 20px;
-                margin: 10px auto;
-            }
-            .upload-container input, .upload-container textarea {
-                padding: 10px;
-                margin: 6px 0;
-            }
-            .upload-container h2 {
-                margin-bottom: 15px;
-                font-size: 22px;
-            }
-        }
         @media (max-width: 520px) {
             .upload-container {
+                padding: 20px;
                 margin: 10px;
             }
         }
@@ -124,20 +104,100 @@
     <div class="upload-container">
         <h2>Upload Dog Details</h2>
         <form action="/upload" method="POST" enctype="multipart/form-data">
-            <input type="text" name="name" placeholder="Dog Name" required>
-            <input type="text" name="breed" placeholder="Breed" required>
-            <input type="text" name="age" placeholder="Age" required>
-            <input type="text" name="health" placeholder="Health Status" required>
-            <input type="text" name="contact" placeholder="Contact Info" required>
-            <textarea name="description" placeholder="Description" required></textarea>
-            <label for="profile">Profile Image:</label>
-            <input type="file" name="profile" accept="image/*" required>
-            <label for="pic1">Pic 1:</label>
-            <input type="file" name="pic1" accept="image/*" required>
-            <label for="pic2">Pic 2:</label>
-            <input type="file" name="pic2" accept="image/*" required>
-            <label for="pic3">Pic 3:</label>
-            <input type="file" name="pic3" accept="image/*" required>
+            <div class="form-group">
+                <label for="name">Dog Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter dog name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="breed">Breed</label>
+                <input type="text" id="breed" name="breed" placeholder="Enter breed" required>
+            </div>
+
+            <div class="form-group">
+                <label for="territory">Territory</label>
+                <input type="text" id="territory" name="territory" placeholder="Enter territory" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age (in years)</label>
+                <input type="number" id="age" name="age" placeholder="Enter age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="vaccination">Vaccination Details</label>
+                <textarea id="vaccination" name="vaccination" placeholder="Enter vaccination details" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="health">Health Status</label>
+                <input type="text" id="health" name="health" placeholder="Enter health status" required>
+            </div>
+
+            <div class="form-group">
+                <label for="abc">Animal Birth Control</label>
+                <select id="abc" name="abc" required>
+                    <option value="Done">ABC: Done</option>
+                    <option value="Not Done">ABC: Not Done</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Contact Info</label>
+                <input type="tel" id="contact" name="contact" placeholder="Enter contact number" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Owner Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter owner email" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Owner Address</label>  
+                <input type="text" id="address" name="address" placeholder="Enter owner address" required>
+            </div>
+
+            <!-- New Owner Details -->
+            <div class="form-group">
+                <label for="owner">Owner Name</label>
+                <input type="text" id="owner" name="owner" placeholder="Enter owner name" required>
+            </div>
+
+            <!-- End of Owner Details -->
+
+            <div class="form-group">
+                <label for="description">Additional Description</label>
+                <textarea id="description" name="description" placeholder="Enter any additional details" required></textarea>
+            </div>
+
+            <div class="form-group file-input">
+                <label for="profile">Profile Image</label>
+                <input type="file" id="profile" name="profile" accept="image/*" required>
+            </div>
+
+            <div class="form-group file-input">
+                <label for="pic1">Additional Image 1</label>
+                <input type="file" id="pic1" name="pic1" accept="image/*" required>
+            </div>
+
+            <div class="form-group file-input">
+                <label for="pic2">Additional Image 2</label>
+                <input type="file" id="pic2" name="pic2" accept="image/*" required>
+            </div>
+
+            <div class="form-group file-input">
+                <label for="pic3">Additional Image 3</label>
+                <input type="file" id="pic3" name="pic3" accept="image/*" required>
+            </div>
+
             <button type="submit">Upload</button>
         </form>
     </div>
